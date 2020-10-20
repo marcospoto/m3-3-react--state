@@ -3,8 +3,13 @@ import styled from "styled-components";
 
 import { colors } from "./GlobalStyles";
 
-const LetterKey = ({}) => {
-  return <Wrapper>a</Wrapper>;
+const LetterKey = ({ checkGuess, letter, usedLetters }) => {
+  let isLetterIncluded = !usedLetters.includes(letter);
+  return (
+    <Wrapper disabled={!isLetterIncluded} onClick={() => checkGuess(letter)}>
+      {letter}
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.button`
